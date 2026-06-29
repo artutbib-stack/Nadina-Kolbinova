@@ -10,39 +10,102 @@
             background-color: #fcf8f7;
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            text-align: center;
         }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 400px;
-            border: 1px solid #f0e4e2;
+        .header-line {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e8dcd8;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
         }
         h1 {
             color: #d4a373;
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
+            display: inline-block;
         }
-        p {
-            font-size: 1.2rem;
+        .subtitle {
+            font-size: 1.3rem;
             color: #6c757d;
             letter-spacing: 1px;
             text-transform: uppercase;
+            margin: 0;
+            display: inline-block;
+            margin-left: 15px;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; display: block; }
+            .subtitle { font-size: 1.1rem; display: block; margin-left: 0; margin-top: 5px; }
+        }
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #c29468;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .info-block {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #e8dcd8;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #d4a373;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <div class="header-line">
         <h1>Надія Колбінова</h1>
-        <p>Косметолог-естетист</p>
+        <p class="subtitle">— Косметолог-естетист</p>
+    </div>
+
+    <div class="content">
+        <p>Чи можна зупинити час без радикальних втручань? Моя відповідь ‐ однозначно так. Справжня краса не потребує масок, вона потребує правильного, глибокого та дбайливого догляду.</p>
+        
+        <p>Я ‐ косметолог‐естетист, і моя мета ‐ допомогти вашій шкірі світитися здоров’ям, зберігаючи вашу унікальну індивідуальність.</p>
+        
+        <p>У своїй практиці я поєдную три найефективніші напрямки:</p>
+        
+        <h3>✨ Міофасціальний масаж обличчя</h3>
+        <p>Це не просто розслаблення, це справжня «йога» для м’язів та фасцій. Працюючи з глибокими тканями, ми знімаємо спазми, повертаємо м’язам їхню природну довжину, відновлюємо чіткий овал обличчя та зменшуємо набряки. Результат видно вже після першої процедури!</p>
+        
+        <h3>✨ Апаратна косметологія</h3>
+        <p>Сучасні, безпечні та неінвазивні технології, які працюють на клітинному рівні. Вони стимулюють вироблення власного колагену, покращують тонус та миттєво освіжають шкіру без реабілітаційного періоду.</p>
+        
+        <h3>✨ Ексклюзивні доглядові процедури</h3>
+        <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лише перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
+        
+        <p>💡 <span class="highlight">Філософія моєї роботи:</span> Краса починається зсередини. Ми працюємо з поставою, розслабленням та природними ресурсами вашого організму для досягнення довготривалого ефекту «Smart Aging».</p>
+        
+        <p>Приходьте на консультацію, і ми створимо вашу індивідуальну програму молодості та свіжості.</p>
+        
+        <div class="info-block">
+            <p>📍 <span class="highlight">Локація:</span> м. Ізмаїл, Проспект Миру 16, Салон краси "Чарівниця"</p>
+            <p>📩 <span class="highlight">Запис у приватні повідомлення або за телефоном:</span> +380979569039</p>
+        </div>
+        
+        <p style="text-align: center; font-style: italic; margin-top: 30px; color: #6c757d;">Подаруйте собі час для релаксу та краси, на яку ви заслуговуєте!</p>
     </div>
 
 </body>
