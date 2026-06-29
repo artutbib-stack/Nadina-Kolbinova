@@ -10,14 +10,68 @@
             background-color: #fcf8f7;
             color: #333;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ЛЕВОЕ МЕНЮ (ПЕРЕКЛЮЧАТЕЛЬ) */
+        .sidebar {
+            width: 240px;
+            background-color: #f5ece9;
+            border-right: 1px solid #e8dcd8;
+            padding: 30px 15px;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: #c29468;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .menu-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            color: #555;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .menu-btn:hover {
+            background-color: #ebdcd7;
+            color: #d4a373;
+        }
+        .menu-btn.active {
+            background-color: #d4a373;
+            color: white;
+        }
+
+        /* ОСНОВНОЙ КОНТЕНТ СПРАВА */
+        .main-container {
+            margin-left: 240px;
+            flex-grow: 1;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-sizing: border-box;
         }
+
         .header-line {
             text-align: center;
-            margin-top: 20px;
             margin-bottom: 40px;
             border-bottom: 1px solid #e8dcd8;
             padding-bottom: 20px;
@@ -39,11 +93,8 @@
             display: inline-block;
             margin-left: 15px;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; display: block; }
-            .subtitle { font-size: 1.1rem; display: block; margin-left: 0; margin-top: 5px; }
-        }
-        .content {
+
+        .content-section {
             max-width: 800px;
             width: 100%;
             background: white;
@@ -53,17 +104,16 @@
             line-height: 1.6;
             font-size: 1.1rem;
             box-sizing: border-box;
+            display: none; /* Прячем разделы по умолчанию */
         }
-        p {
-            margin-bottom: 20px;
+        .content-section.active {
+            display: block; /* Показываем только активный */
         }
-        h3 {
-            color: #c29468;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
+
+        p { margin-bottom: 20px; }
+        h3 { color: #c29468; margin-top: 25px; margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* ГАЛЕРЕИ КАРТИНОК И ВИДЕО */
         .media-gallery {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -77,15 +127,21 @@
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            background-color: #f0f0f0;
         }
-        @media (max-width: 500px) {
-            .media-gallery {
-                grid-template-columns: 1fr;
-            }
-            .media-gallery img, .media-gallery video {
-                height: 350px;
-            }
+
+        /* ГАЛЕРЕЯ ДЛЯ РАЗДЕЛА МОИ РАБОТЫ (3 в ряд или 2 в ряд) */
+        .works-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .works-gallery img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
 
         .info-block {
@@ -93,58 +149,121 @@
             padding-top: 20px;
             border-top: 1px dashed #e8dcd8;
         }
-        .highlight {
-            font-weight: bold;
-            color: #d4a373;
+        .highlight { font-weight: bold; color: #d4a373; }
+
+        /* АДАПТИВНОСТЬ ПОД МОБИЛКИ */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 15px; display: flex; justify-content: center; gap: 10px; }
+            .sidebar h2 { display: none; }
+            .menu-btn { width: auto; margin-bottom: 0; inline-block; }
+            .main-container { margin-left: 0; padding: 20px; }
+            h1 { font-size: 2rem; display: block; }
+            .subtitle { font-size: 1.1rem; display: block; margin-left: 0; margin-top: 5px; }
+            .media-gallery, .works-gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header-line">
-        <h1>Надія Колбінова</h1>
-        <p class="subtitle">— Косметолог-естетист</p>
+    <div class="sidebar">
+        <h2>Меню</h2>
+        <button class="menu-btn active" onclick="switchTab('main-page')">Головна</button>
+        <button class="menu-btn" onclick="switchTab('works-page')">Мої роботи</button>
     </div>
 
-    <div class="content">
-        <p>Чи можна зупинити час без радикальних втручань? Моя відповідь ‐ однозначно так. Справжня краса не потребує масок, вона потребує правильного, глибокого та дбайливого догляду.</p>
-        
-        <p>Я ‐ косметолог‐естетист, і моя мета ‐ допомогти вашій шкірі світитися здоров’ям, зберігаючи вашу унікальну індивідуальність.</p>
-        
-        <p>У своїй практиці я поєдную три найефективніші напрямки:</p>
-        
-        <h3>✨ Міофасціальний масаж обличчя</h3>
-        <p>Це не просто розслаблення, це справжня «йога» для м’язів та фасцій. Працюючи з глибокими тканями, ми знімаємо спазми, повертаємо м’язам їхню природну довжину, відновлюємо чіткий овал обличчя та зменшуємо набряки. Результат видно вже після першої процедури!</p>
-        <div class="media-gallery">
-            <img src="photo_15_2026-06-29_11-42-47.jpg" alt="Міофасціальний масаж">
-            <img src="photo_5_2026-06-29_11-42-47.jpg" alt="Масаж обличчя">
+    <div class="main-container">
+
+        <div class="header-line">
+            <h1 id="page-title">Надія Колбінова</h1>
+            <p id="page-subtitle" class="subtitle">— Косметолог-естетист</p>
         </div>
-        
-        <h3>✨ Апаратна косметологія</h3>
-        <p>Сучасні, безпечні та неінвазивні технології, які працюють на клітурному рівні. Вони стимулюють вироблення власного колагену, покращують тонус та миттєво освіжають шкіру без реабілітаційного періоду.</p>
-        <div class="media-gallery">
-            <img src="photo_4_2026-06-29_11-42-47.jpg" alt="Апаратна косметологія">
-            <video src="video_2026-06-29_11-42-47.mp4" autoplay loop muted playsinline controls></video>
+
+        <div id="main-page" class="content-section active">
+            <p>Чи можна зупинити час без радикальних втручань? Моя відповідь ‐ однозначно так. Справжня краса не потребує масок, вона потребує правильного, глибокого та дбайливого догляду.</p>
+            <p>Я ‐ косметолог‐естетист, і моя мета ‐ допомогти вашій шкірі світитися здоров’ям, зберігаючи вашу унікальну індивідуальність.</p>
+            
+            <div class="media-gallery">
+                <img src="photo_1_2026-06-29_11-42-47.jpg" alt="Салон">
+                <img src="photo_2_2026-06-29_11-42-47.jpg" alt="Атмосфера">
+            </div>
+
+            <p>У своїй практиці я поєдную три найефективніші напрямки:</p>
+            
+            <h3>✨ Міофасціальний масаж обличчя</h3>
+            <p>Це не просто розслаблення, це справжня «йога» для м’язів та фасцій. Працюючи з глибокими тканями, ми знімаємо спазми, повертаємо м’язам їхню природну довжину, відновлюємо чіткий овал обличчя та зменшуємо набряки. Результат видно вже після першої процедури!</p>
+            <div class="media-gallery">
+                <img src="photo_15_2026-06-29_11-42-47.jpg" alt="Міофасціальний масаж">
+                <img src="photo_5_2026-06-29_11-42-47.jpg" alt="Масаж обличчя">
+            </div>
+            
+            <h3>✨ Апаратна косметологія</h3>
+            <p>Сучасні, безпечні та неінвазивні технології, які працюють на клітурному рівні. Вони стимулюють вироблення власного колагену, покращують тонус та миттєво освіжають шкіру без реабілітаційного періоду.</p>
+            <div class="media-gallery">
+                <img src="photo_4_2026-06-29_11-42-47.jpg" alt="Апаратна косметологія">
+                <video src="video_2026-06-29_11-42-47.mp4" autoplay loop muted playsinline controls></video>
+            </div>
+            
+            <h3>✨ Ексклюзивні доглядові процедури</h3>
+            <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лише перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
+            <div class="media-gallery">
+                <img src="photo_3_2026-06-29_11-42-47.jpg" alt="Професійна косметика">
+                <img src="photo_6_2026-06-29_11-42-47.jpg" alt="Догляд за шкірою">
+            </div>
+
+            <div class="media-gallery">
+                <img src="photo_11_2026-06-29_11-42-47.jpg" alt="Додаткові процедури">
+                <img src="photo_12_2026-06-29_11-42-47.jpg" alt="Дарсонвалізація">
+            </div>
+            
+            <p>💡 <span class="highlight">Філософія моєї роботи:</span> Краса починається зсередини. Ми працюємо з поставою, розслабленням та природними ресурсами вашого організму для досягнення довготривалого ефекту «Smart Aging».</p>
+            <p>Приходьте на溫консультацію, і ми створимо вашу індивідуальну програму молодості та свіжості.</p>
+            
+            <div class="info-block">
+                <p>📍 <span class="highlight">Локація:</span> м. Ізмаїл, Проспект Миру 16, Салон краси "Чарівниця"</p>
+                <p>📩 <span class="highlight">Запис у приватні повідомлення або за телефоном:</span> +380979569039</p>
+            </div>
+            <p style="text-align: center; font-style: italic; margin-top: 30px; color: #6c757d;">Подаруйте собі час для релаксу та краси, на яку ви заслуговуєте!</p>
         </div>
-        
-        <h3>✨ Ексклюзивні доглядові процедури</h3>
-        <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лише перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
-        <div class="media-gallery">
-            <img src="photo_3_2026-06-29_11-42-47.jpg" alt="Професійна косметика">
-            <img src="photo_6_2026-06-29_11-42-47.jpg" alt="Догляд за шкірою">
+
+        <div id="works-page" class="content-section">
+            <div class="works-gallery">
+                <img src="photo_1_2026-06-29_12-06-11.jpg" alt="Мої роботи 1">
+                <img src="photo_2_2026-06-29_12-06-11.jpg" alt="Мої роботи 2">
+                <img src="photo_3_2026-06-29_12-06-11.jpg" alt="Мої роботи 3">
+                <img src="photo_4_2026-06-29_12-06-11.jpg" alt="Мої роботи 4">
+                <img src="photo_5_2026-06-29_12-06-11.jpg" alt="Мої роботи 5">
+                <img src="photo_6_2026-06-29_12-06-11.jpg" alt="Мої роботи 6">
+            </div>
         </div>
-        
-        <p>💡 <span class="highlight">Філософія моєї роботи:</span> Краса починається зсередини. Ми працюємо з поставою, розслабленням та природними ресурсами вашого організму для досягнення довготривалого ефекту «Smart Aging».</p>
-        
-        <p>Приходьте на консультацію, і ми створимо вашу індивідуальну програму молодості та свіжості.</p>
-        
-        <div class="info-block">
-            <p>📍 <span class="highlight">Локація:</span> м. Ізмаїл, Проспект Миру 16, Салон краси "Чарівниця"</p>
-            <p>📩 <span class="highlight">Запис у приватні повідомлення або за телефоном:</span> +380979569039</p>
-        </div>
-        
-        <p style="text-align: center; font-style: italic; margin-top: 30px; color: #6c757d;">Подаруйте собі час для релаксу та краси, на яку ви заслуговуєте!</p>
+
     </div>
+
+    <script>
+        function switchTab(tabId) {
+            // Убираем активный класс у всех секций и кнопок
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Показываем нужную секцию
+            document.getElementById(tabId).classList.add('active');
+            
+            // Делаем кнопку активной
+            event.target.classList.add('active');
+
+            // Меняем заголовок в зависимости от вкладки
+            const titleEl = document.getElementById('page-title');
+            const subtitleEl = document.getElementById('page-subtitle');
+
+            if (tabId === 'works-page') {
+                titleEl.innerText = "Мої роботи";
+                subtitleEl.innerText = "— До і Після";
+            } else {
+                titleEl.innerText = "Надія Колбінова";
+                subtitleEl.innerText = "— Косметолог-естетист";
+            }
+        }
+    </script>
 
 </body>
 </html>
