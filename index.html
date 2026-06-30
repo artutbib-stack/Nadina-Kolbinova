@@ -125,18 +125,54 @@
 
         p { margin-bottom: 20px; }
         h3 { color: #c29468; margin-top: 25px; margin-bottom: 15px; font-size: 1.4rem; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #e8dcd8; padding: 12px; text-align: left; }
-        th { background-color: #f5ece9; }
 
+        /* ГАЛЕРЕИ */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+        .media-gallery img, .media-gallery video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .works-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .works-gallery img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .info-block {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #e8dcd8;
+        }
         .highlight { font-weight: bold; color: #d4a373; }
 
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 15px; display: flex; justify-content: center; gap: 10px; }
             .sidebar h2 { display: none; }
-            .menu-btn { width: auto; margin-bottom: 0; }
+            .menu-btn { width: auto; margin-bottom: 0; display: inline-block; }
             .main-container { margin-left: 0; padding: 20px; }
+            h1 { font-size: 2rem; display: block; }
+            .subtitle { font-size: 1.1rem; display: block; margin-left: 0; margin-top: 5px; }
+            .media-gallery, .works-gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -151,75 +187,125 @@
     </div>
 
     <div class="main-container">
+
         <div class="header-line">
             <div id="avatar-container"><img id="main-avatar" class="avatar-img" src="photo_2026-06-29_12-27-01.jpg" alt="Надія Колбінова"></div>
             <h1 id="page-title">Надія Колбінова</h1>
             <p id="page-subtitle" class="subtitle">— Косметолог-естетист</p>
         </div>
 
-        <!-- Головна -->
         <div id="main-page" class="content-section active">
             <p>Чи можна зупинити час без радикальних втручань? Моя відповідь ‐ однозначно так. Справжня краса не потребує масок, вона потребує правильного, глибокого та дбайливого догляду.</p>
             <p>Я ‐ косметолог‐естетист, і моя мета ‐ допомогти вашій шкірі світитися здоров’ям, зберігаючи вашу унікальну індивідуальність.</p>
-        </div>
-
-        <!-- Міофасціальний масаж -->
-        <div id="massage-page" class="content-section">
-            <h3>✨ Міофасціальний масаж обличчя</h3>
-            <p>Міофасціальний масаж обличчя ‐ це глибока мануальна техніка, яка працює не з поверхнею шкіри, а з фасціями та м'язами. Це основа філософії Smart Aging для природного омолодження без інвазивних втручань.</p>
-        </div>
-
-        <!-- Мікрострумова терапія -->
-        <div id="microcurrent-page" class="content-section">
-            <h3>✨ Мікрострумова терапія</h3>
-            <p>Це один із найефективніших і найбільш фізіологічних методів у концепції Smart Aging для природного омолодження та розкриття клітинного потенціалу шкіри.</p>
-            <p>Особливість мікрострумів полягає в тому, що вони діють як слабкі електричні імпульси, що проникають у клітину, не викликаючи при цьому скорочення м'язів (на відміну від міостимуляції).</p>
             
-            <h3>Чому це працює?</h3>
-            <p>Наше тіло має власний біоелектричний потенціал. Якщо клітина пошкоджується або старіє, її потенціал знижується. Мікрострумові пристрої працюють як «підзарядка»:</p>
-            <ul>
-                <li><b>Стимуляція синтезу АТФ:</b> Струм у мікроамперах (мкА) активує природні процеси в організмі та підвищує вироблення АТФ (головного джерела клітинної енергії) до 500%.</li>
-                <li><b>Транспорт речовин:</b> Активується приплив амінокислот та іонів, що прискорює синтез власного колагену та еластину.</li>
-                <li><b>Робота з м'язовим тонусом:</b> Метод унікальний для відновлення м'язів. Він одночасно розслаблює гіпертонус (наприклад, затиснену платизму) та тонізує ослаблені, розтягнуті тканини, повертаючи їм первинну форму.</li>
-            </ul>
+            <div class="media-gallery">
+                <img src="photo_1_2026-06-29_11-42-47.jpg" alt="Салон">
+                <img src="photo_2_2026-06-29_11-42-47.jpg" alt="Атмосфера">
+            </div>
 
-            <h3>Основні ефекти</h3>
-            <table>
-                <tr><th>Процедура</th><th>Результат</th></tr>
-                <tr><td>Лімфодренаж</td><td>Швидке виведення зайвої рідини, усунення пастозності та набряків навколо очей через активацію лімфотоку.</td></tr>
-                <tr><td>Клітинний ліфтинг</td><td>Побудова архітектоніки обличчя, чіткий овал, зменшення проявів гравітаційного птозу.</td></tr>
-                <tr><td>Мікроциркуляція</td><td>Покращення живлення тканин, здоровий рум'янець, відновлення тону шкіри та зміцнення капілярів.</td></tr>
-                <tr><td>Регенерація</td><td>Відновлення після інвазивних процедур або пілінгів, робота з куперозом.</td></tr>
-            </table>
+            <p>У своїй практиці я поєдную три найефективніші напрямки:</p>
+            
+            <h3>✨ Апаратна косметологія</h3>
+            <p>Сучасні, безпечні та неінвазивні технології, які працюють на клітинному рівні. Вони стимулюють вироблення власного колагену, покращують тонус та миттєво освіжають шкіру без реабілітаційного періоду.</p>
+            <div class="media-gallery">
+                <img src="photo_4_2026-06-29_11-42-47.jpg" alt="Апаратна косметологія">
+                <video src="video_2026-06-29_11-42-47.mp4" autoplay loop muted playsinline controls></video>
+            </div>
+            
+            <h3>✨ Ексклюзивні доглядові процедури</h3>
+            <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лише перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
+            <div class="media-gallery">
+                <img src="photo_3_2026-06-29_11-42-47.jpg" alt="Професійна косметика">
+                <img src="photo_6_2026-06-29_11-42-47.jpg" alt="Догляд за шкірою">
+            </div>
 
-            <h3>Синергія та комфорт</h3>
-            <p>Мікроструми створюють потужний ефект у поєднанні з ручними техніками: проведена терапія чудово готує тканини до масажу (міофасціального чи буккального), знімаючи м'язові блоки, а після масажу виконує фінальний дренажний етап.</p>
-            <p>Процедура абсолютно безболісна, комфортна і не потребує реабілітації, що робить її базовим інструментом для підтримки краси та здоров'я вашої шкіри.</p>
-        </div>
-
-        <!-- Мої роботи -->
-        <div id="works-page" class="content-section">
-            <div class="works-gallery">
-                <img src="photo_1_2026-06-29_12-06-11.jpg" alt="Мої роботи">
+            <div class="media-gallery">
+                <img src="photo_11_2026-06-29_11-42-47.jpg" alt="Додаткові процедури">
+                <img src="photo_12_2026-06-29_11-42-47.jpg" alt="Дарсонвалізація">
+            </div>
+            
+            <p>💡 <span class="highlight">Філософія моєї роботи:</span> Краса починається зсередини. Ми працюємо з поставою, розслабленням та природними ресурсами вашого організму для досягнення довготривалого ефекту «Smart Aging».</p>
+            
+            <div class="info-block">
+                <p>📍 <span class="highlight">Локація:</span> м. Ізмаїл, Проспект Миру 16, Салон краси "Чарівниця"</p>
+                <p>📩 <span class="highlight">Запис у приватні повідомлення або за телефоном:</span> +380979569039</p>
             </div>
         </div>
+
+        <div id="massage-page" class="content-section">
+            <h3>✨ Міофасціальний масаж обличчя</h3>
+            <p>Міофасціальний масаж обличчя ‐ це глибока мануальна техніка, яка працює не з поверхнею шкіри, а з фасціями та м'язами. Цей метод є основою філософії Smart Aging для природного омолодження без інвазивних втручань.</p>
+            <p>На відміну від класичного масажу, тут не використовуються олії чи креми, щоб пальці спеціаліста могли глибоко пропрацювати тканини й зняти спазми.</p>
+            <h3>Як це працює?</h3>
+            <ul>
+                <li><b>Міофасціальні ланцюги:</b> Напруга у стопах чи шиї тягне тканини обличчя вниз.</li>
+                <li><b>Тригерні точки:</b> Зони хронічного затиску блокують лімфовідтік.</li>
+                <li><b>Звільнення фасцій:</b> Повертає м'язам природну довжину.</li>
+            </ul>
+        </div>
+
+        <div id="microcurrent-page" class="content-section">
+            <h3>✨ Мікрострумова терапія</h3>
+            <p>Це один із найефективніших методів у концепції Smart Aging для природного омолодження та розкриття клітинного потенціалу шкіри.</p>
+            <p>Мікроструми діють як слабкі електричні імпульси, що проникають у клітину, не викликаючи скорочення м'язів.</p>
+            <h3>Переваги методу:</h3>
+            <ul>
+                <li><b>Стимуляція синтезу АТФ:</b> Підвищує вироблення енергії клітин до 500%.</li>
+                <li><b>Транспорт речовин:</b> Активує приплив амінокислот, прискорює синтез колагену та еластину.</li>
+                <li><b>Робота з м'язовим тонусом:</b> Розслабляє гіпертонус та тонізує ослаблені тканини.</li>
+            </ul>
+            <h3>Основні ефекти:</h3>
+            <ul>
+                <li><b>Лімфодренаж:</b> Усунення набряків та пастозності.</li>
+                <li><b>Клітинний ліфтинг:</b> Чіткий овал, боротьба з птозом.</li>
+                <li><b>Мікроциркуляція:</b> Здоровий рум'янець та зміцнення капілярів.</li>
+                <li><b>Регенерація:</b> Відновлення після процедур та пілінгів.</li>
+            </ul>
+            <p>Процедура безболісна, комфортна і не потребує реабілітації.</p>
+        </div>
+
+        <div id="works-page" class="content-section">
+            <div class="works-gallery">
+                <img src="photo_1_2026-06-29_12-06-11.jpg" alt="Мої роботи 1">
+                <img src="photo_2_2026-06-29_12-06-11.jpg" alt="Moї роботи 2">
+                <img src="photo_3_2026-06-29_12-06-11.jpg" alt="Мої роботи 3">
+                <img src="photo_4_2026-06-29_12-06-11.jpg" alt="Мої роботи 4">
+                <img src="photo_5_2026-06-29_12-06-11.jpg" alt="Мої роботи 5">
+                <img src="photo_6_2026-06-29_12-06-11.jpg" alt="Мої роботи 6">
+            </div>
+        </div>
+
     </div>
 
     <script>
         function switchTab(tabId, btn) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
 
             const titleEl = document.getElementById('page-title');
-            const subEl = document.getElementById('page-subtitle');
+            const subtitleEl = document.getElementById('page-subtitle');
             const avatarEl = document.getElementById('main-avatar');
 
-            if (tabId === 'works-page') { titleEl.innerText = "Мої роботи"; subEl.innerText = "— До і Після"; avatarEl.style.display = "none"; }
-            else if (tabId === 'massage-page') { titleEl.innerText = "Міофасціальний масаж"; subEl.innerText = "— Йога для обличчя"; avatarEl.style.display = "none"; }
-            else if (tabId === 'microcurrent-page') { titleEl.innerText = "Мікрострумова терапія"; subEl.innerText = "— Клітинне омолодження"; avatarEl.style.display = "none"; }
-            else { titleEl.innerText = "Надія Колбінова"; subEl.innerText = "— Косметолог-естетист"; avatarEl.style.display = "block"; }
+            if (tabId === 'works-page') {
+                titleEl.innerText = "Мої роботи";
+                subtitleEl.innerText = "— До і Після";
+                avatarEl.style.display = "none";
+            } else if (tabId === 'massage-page') {
+                titleEl.innerText = "Міофасціальний масаж";
+                subtitleEl.innerText = "— Йога для обличчя";
+                avatarEl.style.display = "none";
+            } else if (tabId === 'microcurrent-page') {
+                titleEl.innerText = "Мікрострумова терапія";
+                subtitleEl.innerText = "— Клітинне омолодження";
+                avatarEl.style.display = "none";
+            } else {
+                titleEl.innerText = "Надія Колбінова";
+                subtitleEl.innerText = "— Косметолог-естетист";
+                avatarEl.style.display = "inline-block";
+            }
         }
     </script>
 </body>
