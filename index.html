@@ -15,7 +15,6 @@
             min-height: 100vh;
         }
 
-        /* ЛЕВОЕ МЕНЮ */
         .sidebar {
             width: 240px;
             background-color: #f5ece9;
@@ -59,7 +58,6 @@
             color: white;
         }
 
-        /* ОСНОВНОЙ КОНТЕНТ */
         .main-container {
             margin-left: 240px;
             flex-grow: 1;
@@ -126,12 +124,29 @@
         p { margin-bottom: 20px; }
         h3 { color: #c29468; margin-top: 25px; margin-bottom: 15px; font-size: 1.4rem; }
 
-        /* ТАБЛИЦЯ */
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { border: 1px solid #e8dcd8; padding: 12px; text-align: left; }
-        th { background-color: #f5ece9; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.05rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e8dcd8;
+        }
+        th {
+            background-color: #f5ece9;
+            color: #c29468;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        tr:hover {
+            background-color: #fdfaf9;
+        }
 
-        /* ГАЛЕРЕИ */
         .media-gallery {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -168,16 +183,31 @@
         }
         .highlight { font-weight: bold; color: #d4a373; }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 15px; display: flex; justify-content: center; gap: 10px; }
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+                padding: 15px; 
+                display: flex; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px; 
+            }
             .sidebar h2 { display: none; }
-            .menu-btn { width: auto; margin-bottom: 0; display: inline-block; }
+            .menu-btn { 
+                width: auto; 
+                margin-bottom: 0; 
+                display: inline-block; 
+                padding: 10px 12px; 
+                font-size: 1rem; 
+            }
             .main-container { margin-left: 0; padding: 20px; }
             h1 { font-size: 2rem; display: block; }
             .subtitle { font-size: 1.1rem; display: block; margin-left: 0; margin-top: 5px; }
             .media-gallery, .works-gallery { grid-template-columns: 1fr; }
+            th, td { padding: 10px; font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -187,8 +217,8 @@
         <h2>Меню</h2>
         <button class="menu-btn active" onclick="switchTab('main-page', this)">Головна</button>
         <button class="menu-btn" onclick="switchTab('massage-page', this)">Міофасціальний масаж</button>
-        <button class="menu-btn" onclick="switchTab('microcurrent-page', this)">Мікрострумова терапія</button>
         <button class="menu-btn" onclick="switchTab('works-page', this)">Мої роботи</button>
+        <button class="menu-btn" onclick="switchTab('microcurrent-page', this)">Мікрострумова терапія</button>
     </div>
 
     <div class="main-container">
@@ -218,7 +248,7 @@
             </div>
             
             <h3>✨ Ексклюзивні доглядові процедури</h3>
-            <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лише перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
+            <p>Індивідуально підібрані ритуали краси: від глибокого очищення та зволоження до інтенсивного живлення. Використовую лишь перевірені професійні засоби, що дарують шкірі тонус та сяйво.</p>
             <div class="media-gallery">
                 <img src="photo_3_2026-06-29_11-42-47.jpg" alt="Професійна косметика">
                 <img src="photo_6_2026-06-29_11-42-47.jpg" alt="Догляд за шкірою">
@@ -262,7 +292,8 @@
 
         <div id="microcurrent-page" class="content-section">
             <h3>✨ Мікрострумова терапія</h3>
-            <p>Це один із найефективніших методів у концепції Smart Aging для природного омолодження та розкриття клітинного потенціалу шкіри.</p>
+            <p>Це один із найефективніших методів у концепції Smart Aging для природного омолодження та розкриття клітинного потенціалу шкіри. Мікроструми працюють як «підзарядка» для клітин, стимулюючи вироблення АТФ та синтез колагену.</p>
+            
             <table>
                 <tr>
                     <th>Ефект</th>
@@ -270,17 +301,22 @@
                 </tr>
                 <tr>
                     <td>Лімфодренаж</td>
-                    <td>Зняття набряків та пастозності</td>
+                    <td>Зняття набряків, покращення лімфотоку</td>
                 </tr>
                 <tr>
                     <td>Клітинний ліфтинг</td>
-                    <td>Чіткий овал, боротьба з птозом</td>
+                    <td>Чіткий овал обличчя, корекція птозу</td>
                 </tr>
                 <tr>
                     <td>Мікроциркуляція</td>
                     <td>Здоровий рум'янець та зміцнення капілярів</td>
                 </tr>
+                <tr>
+                    <td>Регенерація</td>
+                    <td>Відновлення тканин після пілінгів</td>
+                </tr>
             </table>
+            <p>Процедура абсолютно безболісна, комфортна і не потребує реабілітації, що робить її базовим інструментом для підтримки краси.</p>
         </div>
 
         <div id="works-page" class="content-section">
@@ -299,31 +335,33 @@
     <script>
         function switchTab(tabId, btn) {
             document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.menu-btn').forEach(menuBtn => menuBtn.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
 
             const titleEl = document.getElementById('page-title');
             const subtitleEl = document.getElementById('page-subtitle');
-            const avatarEl = document.getElementById('main-avatar');
+            const avatarContainer = document.getElementById('avatar-container');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if (tabId === 'works-page') {
                 titleEl.innerText = "Мої роботи";
                 subtitleEl.innerText = "— До і Після";
-                avatarEl.style.display = "none";
+                avatarContainer.style.display = "none";
             } else if (tabId === 'massage-page') {
                 titleEl.innerText = "Міофасціальний масаж";
                 subtitleEl.innerText = "— Йога для обличчя";
-                avatarEl.style.display = "none";
+                avatarContainer.style.display = "none";
             } else if (tabId === 'microcurrent-page') {
                 titleEl.innerText = "Мікрострумова терапія";
                 subtitleEl.innerText = "— Клітинне омолодження";
-                avatarEl.style.display = "none";
+                avatarContainer.style.display = "none";
             } else {
                 titleEl.innerText = "Надія Колбінова";
                 subtitleEl.innerText = "— Косметолог-естетист";
-                avatarEl.style.display = "inline-block";
+                avatarContainer.style.display = "block";
             }
         }
     </script>
